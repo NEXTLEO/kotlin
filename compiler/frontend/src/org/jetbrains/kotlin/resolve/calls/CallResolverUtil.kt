@@ -173,7 +173,7 @@ fun createResolutionCandidatesForConstructors(
         call: Call,
         classWithConstructors: ClassDescriptor,
         knownSubstitutor: TypeSubstitutor? = null
-): Collection<ResolutionCandidate<CallableDescriptor>> {
+): Collection<ResolutionCandidate<ConstructorDescriptor>> {
     val constructors = classWithConstructors.constructors.check { it.isNotEmpty() } ?: return emptyList()
 
     val receiverKind: ExplicitReceiverKind
@@ -195,5 +195,5 @@ fun createResolutionCandidatesForConstructors(
         dispatchReceiver = null
     }
 
-    return constructors.map { ResolutionCandidate.create<CallableDescriptor>(call, it, dispatchReceiver, null, receiverKind, knownSubstitutor) }
+    return constructors.map { ResolutionCandidate.create(call, it, dispatchReceiver, null, receiverKind, knownSubstitutor) }
 }
