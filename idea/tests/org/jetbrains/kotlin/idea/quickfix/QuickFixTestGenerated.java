@@ -6903,6 +6903,18 @@ public class QuickFixTestGenerated extends AbstractQuickFixTest {
             doTest(fileName);
         }
 
+        @TestMetadata("addArrayOfTypeFix.kt")
+        public void testAddArrayOfTypeFix() throws Exception {
+            String fileName = KotlinTestUtils.navigationMetadata("idea/testData/quickfix/typeMismatch/addArrayOfTypeFix.kt");
+            doTest(fileName);
+        }
+
+        @TestMetadata("addArrayOfTypeForNamedParameterFix.kt")
+        public void testAddArrayOfTypeForNamedParameterFix() throws Exception {
+            String fileName = KotlinTestUtils.navigationMetadata("idea/testData/quickfix/typeMismatch/addArrayOfTypeForNamedParameterFix.kt");
+            doTest(fileName);
+        }
+
         @TestMetadata("addExclExclToRemoveNullability.kt")
         public void testAddExclExclToRemoveNullability() throws Exception {
             String fileName = KotlinTestUtils.navigationMetadata("idea/testData/quickfix/typeMismatch/addExclExclToRemoveNullability.kt");
@@ -6924,6 +6936,12 @@ public class QuickFixTestGenerated extends AbstractQuickFixTest {
         @TestMetadata("addExclExclToRemoveNullabilityForSubclass.kt")
         public void testAddExclExclToRemoveNullabilityForSubclass() throws Exception {
             String fileName = KotlinTestUtils.navigationMetadata("idea/testData/quickfix/typeMismatch/addExclExclToRemoveNullabilityForSubclass.kt");
+            doTest(fileName);
+        }
+
+        @TestMetadata("addIntArrayOfFix.kt")
+        public void testAddIntArrayOfFix() throws Exception {
+            String fileName = KotlinTestUtils.navigationMetadata("idea/testData/quickfix/typeMismatch/addIntArrayOfFix.kt");
             doTest(fileName);
         }
 
