@@ -810,6 +810,7 @@ public class QuickFixTestGenerated extends AbstractQuickFixTest {
             String fileName = KotlinTestUtils.navigationMetadata("idea/testData/quickfix/changeSignature/removeUnusedParameter.kt");
             doTest(fileName);
         }
+
     }
 
     @TestMetadata("idea/testData/quickfix/checkArguments")
@@ -6771,6 +6772,18 @@ public class QuickFixTestGenerated extends AbstractQuickFixTest {
         @TestMetadata("noAddErrorType.kt")
         public void testNoAddErrorType() throws Exception {
             String fileName = KotlinTestUtils.navigationMetadata("idea/testData/quickfix/typeAddition/noAddErrorType.kt");
+            doTest(fileName);
+        }
+
+        @TestMetadata("propertyWithGetterWithBlockBody.kt")
+        public void testPropertyWithGetterWithBlockBody() throws Exception {
+            String fileName = KotlinTestUtils.navigationMetadata("idea/testData/quickfix/typeAddition/propertyWithGetterWithBlockBody.kt");
+            doTest(fileName);
+        }
+
+        @TestMetadata("propertyWithGetterWithInferredType.kt")
+        public void testPropertyWithGetterWithInferredType() throws Exception {
+            String fileName = KotlinTestUtils.navigationMetadata("idea/testData/quickfix/typeAddition/propertyWithGetterWithInferredType.kt");
             doTest(fileName);
         }
 
