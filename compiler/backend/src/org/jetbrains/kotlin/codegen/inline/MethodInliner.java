@@ -285,7 +285,8 @@ public class MethodInliner {
                         super.visitMethodInsn(opcode, changeOwnerForExternalPackage(owner, opcode), name, desc, itf);
                     }
                 }
-                else if (ReifiedTypeInliner.isNeedClassReificationMarker(new MethodInsnNode(opcode, owner, name, desc, false))) {
+                else if (ReifiedTypeInliner.isNeedClassReificationMarker(new MethodInsnNode(opcode, owner, name, desc, false)) &&
+                         !isDefaultCompilation()) {
                     // we will put it if needed in anew processing
                 }
                 else {
@@ -371,8 +372,7 @@ public class MethodInliner {
                     @NotNull String name, @NotNull String desc, String signature, @NotNull Label start, @NotNull Label end, int index
             ) {
                 if (isInliningLambda || InlineCodegenUtil.GENERATE_SMAP) {
-                    String varSuffix = inliningContext.isRoot() &&
-                                       !((RootInliningContext) inliningContext).isDefaultCompilation &&
+                    String varSuffix = !isDefaultCompilation() &&
                                        !InlineCodegenUtil.isFakeLocalVariableForInline(name) ?
                                        INLINE_FUN_VAR_SUFFIX : "";
                     String varName = !varSuffix.isEmpty() && name.equals("this") ? name + "_" : name;
@@ -440,7 +440,7 @@ public class MethodInliner {
 
             if (frame != null) {
                 if (ReifiedTypeInliner.isNeedClassReificationMarker(cur)) {
-                    awaitClassReification = true;
+                    awaitClassReification = !isDefaultCompilation();
                 }
                 else if (cur.getType() == AbstractInsnNode.METHOD_INSN) {
                     if (InlineCodegenUtil.isFinallyStart(cur)) {
@@ -804,4 +804,7 @@ public class MethodInliner {
 
     }
 
+    private boolean isDefaultCompilation() {
+        return inliningContext.isRoot() && ((RootInliningContext) inliningContext).isDefaultCompilation;
+    }
 }
