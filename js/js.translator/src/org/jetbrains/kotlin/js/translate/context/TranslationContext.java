@@ -445,9 +445,4 @@ public class TranslationContext {
         assert descriptor != null : "Missing declaration descriptor: " + PsiUtilsKt.getTextWithLocation(expression);
         return descriptor;
     }
-
-    public boolean isLocal() {
-        DeclarationDescriptor descriptor = declarationDescriptor;
-        return descriptor != null && DescriptorUtils.isLocal(descriptor);
-    }
 }
